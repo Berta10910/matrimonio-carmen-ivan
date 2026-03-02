@@ -101,6 +101,8 @@ app.post('/rsvp', requireAuth, (req, res) => {
   }
 })
 
+  const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Matrimonio di Carmen e Ivan in ascolto su http://localhost:${PORT}`)
-})
+  console.log(`Server attivo sulla porta ${PORT}`);
+});
