@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= couple %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=123">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><span class="names"><%= couple %></span></div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/invitati">Invitati</a>
+      <form class="logout" action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+    </nav>
+  </header>
+  <main class="content">
+    <section class="hero-invite">
+      <img src="/images/logo.png" alt="Logo Carmen e Ivan" class="main-logo">
+      <h1 class="title">Il Nostro Matrimonio</h1>
+      <p class="date">25 Luglio 2024</p>
+      <div class="divider"></div>
+      <p class="invite-text">
+        Siamo felici di annunciarvi ufficialmente il nostro matrimonio. 
+        In questa pagina troverete tutti i dettagli per celebrare insieme questo giorno speciale.
+      </p>
+    </section>
+
+    <section class="info-section">
+      <div class="info-card">
+        <h3>La Cerimonia</h3>
+        <p>Ore 11:00 — Chiesa di San Pietro</p>
+        <p>Via Roma 1, Milano</p>
+      </div>
+      <div class="info-card">
+        <h3>Il Ricevimento</h3>
+        <p>Ore 13:30 — Villa degli Ulivi</p>
+        <p>Via delle Rose 42, Como</p>
+      </div>
+    </section>
+
+    <section class="rsvp-section">
+      <h2 class="title">Conferma la tua presenza</h2>
+      <p>Per aiutarci nell'organizzazione, ti chiediamo di rispondere a qualche domanda.</p>
+      
+      <form class="rsvp-form" action="/rsvp" method="post">
+        <div class="form-group">
+          <label for="nome">Nome e Cognome</label>
+          <input type="text" id="nome" name="nome" required placeholder="Inserisci il tuo nome">
+        </div>
+        
+        <div class="form-group">
+          <label>Sarai presente?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="presenza" value="si" checked> Sì, con gioia!</label>
+            <label><input type="radio" name="presenza" value="no"> No, purtroppo non posso</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="intolleranze">Intolleranze o preferenze alimentari?</label>
+          <textarea id="intolleranze" name="intolleranze" placeholder="Es. celiachia, vegetariano, allergie..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="canzone">Una canzone che ti farebbe ballare?</label>
+          <input type="text" id="canzone" name="canzone" placeholder="Titolo e autore">
+        </div>
+
+        <div class="form-group">
+          <label for="messaggio">Un messaggio per noi (opzionale)</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Scrivici qualcosa..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Invia Conferma</button>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <span>Celebratione di <%= couple %></span>
+  </footer>
+</body>
+</html>
