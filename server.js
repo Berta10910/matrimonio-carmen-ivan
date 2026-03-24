@@ -66,13 +66,23 @@ app.get('/invitati', requireAuth, (req, res) => {
 
 app.post('/rsvp', requireAuth, (req, res) => {
   const rsvpPath = path.join(__dirname, 'data', 'rsvp.json')
-  const { nome, presenza, intolleranze, canzone, messaggio } = req.body
+  const { 
+    nome, 
+    presenza, 
+    partecipanti_num, 
+    partecipanti_nomi, 
+    allergie, 
+    bambini_eta, 
+    messaggio 
+  } = req.body
   
   const newRsvp = {
     nome,
     presenza,
-    intolleranze,
-    canzone,
+    partecipanti_num,
+    partecipanti_nomi,
+    allergie,
+    bambini_eta,
     messaggio,
     timestamp: new Date().toISOString()
   }
