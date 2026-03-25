@@ -367,8 +367,6 @@ html, body {
 .parking-note-elegant {
   margin-top: 20px;
   padding: 12px;
-  background: #fffbe6;
-  border-left: 4px solid #ffe58f;
   border-radius: 4px;
   font-size: 0.9rem;
   color: #f44336;
@@ -379,7 +377,6 @@ html, body {
 .informazione{
     font-family: system-ui;
     font-weight: 700;
-    text-decoration: underline;
 }
 
 /* Riga minimal tra Ricevimento e RSVP */
