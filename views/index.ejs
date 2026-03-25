@@ -63,8 +63,7 @@
              <p class="address-tag">Via Indipendenza 1, Besozzo</p>
              
              <div class="map-embed">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d2780.812613146433!2d8.665487776822453!3d45.84501430725597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47867be49448834d%3A0x69680c85c392434!2sChiesa%20dei%20SS.%20Alessandro%20e%20Tiburzio!5e0!3m2!1sit!2sit!4v1716388484194!5m2!1sit!2sit" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-             </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d844.7456716414016!2d8.668089125786114!3d45.84882453795928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478678312552c283%3A0x876b1513f6b3686!2sChiesa%20Prepositurale%20dei%20Santi%20Alessandro%20e%20Tiburzio!5e1!3m2!1sit!2sit!4v1774431621625!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>             </div>
 
              <a href="https://maps.app.goo.gl/3f8H3mX8jYm9jYm9" target="_blank" class="map-link-btn">
                 Apri in Google Maps
@@ -86,8 +85,7 @@
             <p class="address-tag">Via Verbano 4, Arona</p>
             
             <div class="map-embed">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d2784.774577452601!2d8.563458876817688!3d45.76566061458923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47867d7a8d5f303f%3A0x8670c7c8f7d4c062!2sRistorante%20San%20Carlo!5e0!3m2!1sit!2sit!4v1716388654118!5m2!1sit!2sit" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d294.7942359189602!2d8.543548500705231!3d45.77066086984996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786718480953947%3A0x5926784b4d36600d!2sRistorante%20San%20Carlo!5e1!3m2!1sit!2sit!4v1774431672315!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
 
             <a href="https://maps.app.goo.gl/3f8H3mX8jYm9jYm9" target="_blank" class="map-link-btn">
               Apri in Google Maps
@@ -95,12 +93,27 @@
             
             <div class="parking-note-elegant">
               <i class="icon-info"></i>
-              <p>Consigliamo di parcheggiare nello sterrato accanto al parcheggio San Carlo.</p>
+              <p class="informazione">Consigliamo di parcheggiare nello sterrato accanto al parcheggio San Carlo.</p>
             </div>
+            <div class="map-embed">
+            <iframe 
+              src="https://www.google.com/maps?q=45.768535,8.544758&t=k&z=18&output=embed"
+              width="100%" 
+              height="200" 
+              style="border:0;" 
+              loading="lazy">
+            </iframe>                 
+            </div>
+            <a href="https://www.google.com/maps?q=45.768535,8.544758" target="_blank" class="map-link-btn">
+              Apri parcheggio su Google Maps
+            </a>    
           </div>
         </div>
       </section>
     </div> <!-- end content-grid-aligned -->
+
+    <!-- RIGA MINIMAL TRA RICEVIMENTO E RSVP -->
+    <div class="minimal-divider-rsvp"></div>
 
     <!-- RSVP FORM (FUORI DALLA GRID) -->
     <section class="card card-rsvp-full">
@@ -112,12 +125,12 @@
       <form class="professional-form" action="/rsvp" method="post">
         <div class="form-grid">
           <div class="form-field full">
-            <label for="nome">Nome e Cognome</label>
+            <label for="nome" class="label">Nome e Cognome</label>
             <input type="text" id="nome" name="nome" placeholder="Esempio: Mario Rossi" required>
           </div>
           
           <div class="form-field full">
-            <label>Sarai presente?</label>
+            <label class="label">Sarai presente?</label>
             <div class="radio-options">
               <label class="radio-card">
                 <input type="radio" name="presenza" value="si" checked>
@@ -130,28 +143,28 @@
             </div>
           </div>
 
-          <div class="form-field">
-            <label for="p_num">Numero partecipanti</label>
+          <div class="form-field full">
+            <label for="p_num" class="label">Numero partecipanti</label>
             <input type="number" id="p_num" name="partecipanti_num" min="1" placeholder="Totale persone">
           </div>
 
-          <div class="form-field">
-            <label for="p_nomi">Nome e cognome partecipanti</label>
+          <div class="form-field full">
+            <label for="p_nomi" class="label">Nome e cognome partecipanti</label>
             <input type="text" id="p_nomi" name="partecipanti_nomi" placeholder="Esempio: Anna, Marco...">
           </div>
 
           <div class="form-field full">
-            <label for="allergie">Allergie, intolleranze o regimi alimentari</label>
+            <label for="allergie" class="label">Allergie, intolleranze o regimi alimentari</label>
             <textarea id="allergie" name="allergie" placeholder="Specifica il nominativo e l'esigenza (es. Mario: celiaco)"></textarea>
           </div>
 
-          <div class="form-field">
-            <label for="b_eta">Età dei vostri bambini</label>
+          <div class="form-field full">
+            <label for="b_eta" class="label">Età dei vostri bambini</label>
             <input type="text" id="b_eta" name="bambini_eta" placeholder="Es: 4 e 7 anni">
           </div>
 
           <div class="form-field full">
-            <label for="mess">Un messaggio per gli sposi</label>
+            <label for="mess" class="label"> Un messaggio per gli sposi</label>
             <textarea id="mess" name="messaggio" placeholder="Scrivici un pensiero..."></textarea>
           </div>
         </div>
@@ -164,6 +177,33 @@
         </div>
       </form>
     </section>
+
+    <!-- ANIMATED PLANE PATH 
+    <div class="animated-plane-container">
+      <div class="animated-plane">✈</div>
+    </div>
+  -->
+    <!-- LISTA NOZZE -->
+    <section class="card card-registry-full">
+      <div class="registry-header">
+        <h3>Lista Nozze</h3>
+      </div>
+      <div class="registry-content">
+        <p class="registry-intro">La vostra presenza nel nostro giorno speciale è per noi il regalo più grande.</p>
+        <p class="registry-text">Se desiderate comunque farci un pensiero, troverete qui un modo per contribuire ai nostri progetti futuri.</p>
+        <p class="registry-signature">Ivan & Carmen</p>
+        
+        <div class="iban-box">
+          <span class="iban-label">IBAN:</span>
+          <code class="iban-code">IT00 X 00000 00000 000000000000</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHIUSURA LOGO -->
+    <div class="footer-logo-container">
+      <img src="/images/logo.png" alt="Logo Ivan e Carmen" class="footer-logo">
+    </div>
 
     <!-- Decorazione fiori in fondo -->
     <div class="footer-flowers"></div>

@@ -1,7 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  overflow-x: hidden; /* Evita scorrimento orizzontale */
 
   /* Colore base */
   background-color: #c4d7ed;
@@ -165,99 +170,93 @@ html, body {
 .passport-container {
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Ridotto per centrare meglio */
-  margin: 0 auto;
-  padding: 40px 15px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-/* Decorazioni esterne */
-.decor {
-  position: fixed; /* Mantiene le decorazioni fisse rispetto allo schermo per evitare sovrapposizioni durante lo scroll */
-  z-index: 1; /* Sotto i contenuti principali */
-  pointer-events: none;
-  opacity: 0.6; /* Più soft per non disturbare */
-}
-.decor-compass {
-  top: 50px;
-  left: 20px;
-  width: 500px; /* Decisamente più piccola */
-}
-.decor-stamp {
-  top: 40px;
-  right: 20px;
-  width: 500px; /* Decisamente più piccola */
-  transform: rotate(12deg);
-}
-.decor-plane {
-  bottom: 100px;
-  left: 40px;
-  width: 60px; /* Piccola e discreta */
-  opacity: 0.4;
 }
 
 .passport-main {
   position: relative;
   z-index: 2;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* Decorazioni esterne (Sfondo) */
+.decor {
+  position: fixed;
+  z-index: 1; /* Sotto al contenuto principale (z-index: 2) */
+  pointer-events: none;
+  opacity: 0.8; /* Molto trasparente */
+}
+.decor-compass { top: 50px; left: -30px; width: 180px; }
+.decor-stamp { top: 40px; right: -20px; width: 160px; transform: rotate(12deg); }
+.decor-plane { bottom: 80px; left: 20px; width: 80px; }
 
 /* Hero Section */
 .hero-section {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   width: 100%;
+  padding: 60px 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .names-title {
   font-family: "Great Vibes", cursive;
-  font-size: 6rem;
+  font-size: 6.5rem;
   color: #1a3c5e;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
 }
 
 .wedding-subtitle-large {
-  font-size: 2.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.8rem;
   font-weight: 600;
   color: #1a3c5e;
   letter-spacing: 2px;
   margin: 20px 0;
-  font-family: "Cormorant Garamond", serif;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
 }
 
 .countdown-box-v2 {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   padding: 20px 40px;
   border-radius: 15px;
-  border: 1px solid rgba(26, 60, 94, 0.15);
+  border: 2px solid #1a3c5e;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  backdrop-filter: blur(5px);
-  max-width: 100%;
+  max-width: 95%;
   box-sizing: border-box;
 }
 
 .countdown-timer-v2 {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   color: #1a3c5e;
+  flex-wrap: wrap;
 }
 
 .cd-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 60px;
 }
 
 .cd-unit span {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1;
+  color: #1a3c5e;
 }
 
 .cd-unit small {
@@ -265,18 +264,17 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 5px;
-  opacity: 0.7;
+  color: #1a3c5e;
+  font-weight: 600;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .cd-sep {
   font-size: 2rem;
-  opacity: 0.3;
+  color: #1a3c5e;
   margin-bottom: 15px;
-}
-
-.cd-sec {
-  color: #4a6fa5;
-  min-width: 60px;
+  font-weight: 700;
+  opacity: 1;
 }
 
 .card h2 {
@@ -295,20 +293,23 @@ html, body {
   font-weight: 700;
   color: #1a3c5e;
   margin-bottom: 8px;
+  font-family: "emoji"
 }
 
 .location-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #1a3c5e;
   margin-bottom: 5px;
+  text-decoration: underline;
 }
 
 .address-tag {
   color: #4a6fa5;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   margin-bottom: 15px;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 600;
 }
 
 .map-embed {
@@ -316,6 +317,14 @@ html, body {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 250px;
+  border: 0;
+  display: block;
 }
 
 .map-link-btn {
@@ -338,10 +347,11 @@ html, body {
 }
 
 .subtitle-elegant {
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.5rem;
+  color: #021949;
   margin-bottom: 10px;
-  font-style: italic;
+  font-family: "emoji", serif;
+  font-weight: 700;
 }
 
 .parking-note-elegant {
@@ -351,89 +361,136 @@ html, body {
   border-left: 4px solid #ffe58f;
   border-radius: 4px;
   font-size: 0.9rem;
-  color: #856404;
+  color: #f44336;
   display: flex;
   gap: 10px;
   text-align: left;
 }
+.informazione{
+    font-family: system-ui;
+    font-weight: 700;
+    text-decoration: underline;
+}
 
-.rsvp-header {
+/* Riga minimal tra Ricevimento e RSVP */
+.minimal-divider-rsvp {
+  width: 90%;
+    height: 2px;
+    background-color: rgba(26, 60, 94, 0.1);
+    margin: 10px auto 0px auto;
+    opacity: 1;
+}
+
+/* Riduzione immagine chiesa */
+.card-cerimonia .card-img-wrapper {
+  max-width: 85%; /* Ridotta leggermente */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* RSVP FULL CARD */
+.card-rsvp-full {
+  margin-top: 80px;
+  width: 100%;
+  padding: 80px 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-bottom: 30px;
 }
 
 .rsvp-header h3 {
   font-family: "Great Vibes", cursive;
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #1a3c5e;
   margin: 0;
 }
 
 .rsvp-deadline {
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   color: #c53030;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 8px;
+  font-family: "Cormorant Garamond", serif;
 }
 
-.form-field label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #1a3c5e;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.professional-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.label{
+      font-weight: 800;
+    font-size: 5vw;
+    font-family: serif;
+    color: #1a3c5e;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.form-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .professional-form input,
 .professional-form textarea {
   width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #d1d9e6;
+  padding: 15px;
+  border: 2px solid #1a3c5e;
   border-radius: 8px;
-  font-family: inherit;
-  font-size: 0.95rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
   background: white;
+  color: #1a3c5e;
   transition: all 0.3s;
-}
-
-.professional-form input:focus,
-.professional-form textarea:focus {
-  border-color: #1a3c5e;
-  box-shadow: 0 0 0 3px rgba(26, 60, 94, 0.1);
-  outline: none;
-}
-
-.professional-form textarea {
-  height: 80px;
-  resize: vertical;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .radio-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: row; /* Forza la riga */
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .radio-card {
+  flex: 1; /* Distribuisce equamente lo spazio */
   cursor: pointer;
+  position: relative;
 }
 
 .radio-card input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .radio-box {
   display: block;
-  padding: 12px;
-  text-align: center;
   background: white;
-  border: 1px solid #d1d9e6;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s;
+  border: 2px solid #1a3c5e;
+  border-radius: 50px;
+  padding: 12px 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3c5e;
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Evita che il testo vada a capo nel bottone */
 }
 
 .radio-card input:checked + .radio-box {
@@ -473,26 +530,175 @@ html, body {
   font-size: 1.2rem;
 }
 
-.footer-flowers {
+/* Plane Flight Animation 
+.animated-plane-container {
+  width: 100%;
+  height: 160px; 
+  position: relative;
+  overflow: hidden;
+  margin-top: -60px;
+  margin-bottom: -60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.animated-plane {
   position: absolute;
-  bottom: -40px;
-  right: -40px;
-  width: 250px;
-  height: 250px;
-  background: url('/images/Rosanautica.png') no-repeat center;
-  background-size: contain;
-  opacity: 0.2;
+  font-size: 2.8rem;
+  color: #1a3c5e;
+  left: 0;
+  top: 50%;
+  transform: translate(-120px, -50%);
+  opacity: 1;
+
+  animation: planeFlight 16s linear infinite;
+
+  will-change: transform; 
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+}
+
+@keyframes planeFlight {
+  0% {
+    transform: translateX(-120px) translateY(0px) rotate(6deg);
+  }
+
+  15% {
+    transform: translateX(15vw) translateY(-12px) rotate(6deg);
+  }
+
+  30% {
+    transform: translateX(30vw) translateY(8px) rotate(6deg);
+  }
+
+  45% {
+    transform: translateX(45vw) translateY(-10px) rotate(6deg);
+  }
+
+  60% {
+    transform: translateX(60vw) translateY(6px) rotate(6deg);
+  }
+
+  75% {
+    transform: translateX(75vw) translateY(-8px) rotate(6deg);
+  }
+
+  90% {
+    transform: translateX(90vw) translateY(4px) rotate(6deg);
+  }
+
+  100% {
+    transform: translateX(120vw) translateY(0px) rotate(6deg);
+  }
+}
+*/
+/* LISTA NOZZE FULL CARD */
+.card-registry-full {
+  margin-top: 20px; /* Ridotto per far spazio all'aereo */
+  width: 100%;
+  padding: 60px 15px 0 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.registry-header h3 {
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+  color: #1a3c5e;
+  margin-bottom: 20px;
+}
+
+.registry-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.registry-intro, .registry-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  color: #1a3c5e;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.registry-signature {
+  font-family: "Great Vibes", cursive;
+  font-size: 3rem;
+  color: #1a3c5e;
+  margin: 30px 0 10px 0;
+}
+
+.iban-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  border: 2px solid #1a3c5e;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.iban-label {
+  font-weight: 700;
+  margin-right: 10px;
+  color: #1a3c5e;
+}
+
+.iban-code {
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #1a3c5e;
+  letter-spacing: 1px;
+}
+
+/* Footer Logo */
+.footer-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 15px 60px 15px;
+  box-sizing: border-box;
+}
+
+.footer-logo {
+  width: 550px;
+  max-width: 100%;
+  height: auto;
+  opacity: 1;
+  display: block;
+}
+
+/* Mobile Adjustments Registry & Logo */
+@media (max-width: 768px) {
+  .card-registry-full { padding: 40px 15px 0 15px; }
+  .registry-header h3 { font-size: 3.2rem; }
+  .registry-intro, .registry-text { font-size: 1.2rem; }
+  .registry-signature { font-size: 2.5rem; margin: 20px 0 5px 0; }
+  .iban-code { font-size: 1rem; }
+  .footer-logo { width: 350px; }
+  .footer-logo-container { margin-top: 0; padding-bottom: 0; }
+}
+
+.footer-flowers {
+  display: none; /* Rimosso per pulizia finale come richiesto */
 }
 
 
-/* Content Grid Aligned */
+/* Content Grid Aligned (Cerimonia e Ricevimento) */
 .content-grid-aligned {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automatico */
-  gap: 30px;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
@@ -581,24 +787,34 @@ html, body {
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-  .passport-container {
-    padding: 20px 10px;
-  }
-  .passport-main {
-    padding: 0;
-  }
-  .names-title { font-size: 3.2rem; }
-  .wedding-subtitle-large { font-size: 1.3rem; }
-  .countdown-box-v2 { padding: 15px; }
+  .hero-section { padding: 40px 15px; margin-bottom: 40px; }
+  .names-title { font-size: 4.5rem; }
+  .wedding-subtitle-large { font-size: 1.9rem; }
+  .countdown-box-v2 { padding: 15px; width: 95%; }
   .cd-unit span { font-size: 1.8rem; }
   .cd-sep { font-size: 1.5rem; margin-bottom: 10px; }
+  
   .content-grid-aligned { 
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 30px;
+    padding: 0 15px;
   }
-  .card-rsvp-full { padding: 20px; margin-top: 20px; }
-  .btn-send-professional { width: 100%; justify-content: center; padding: 12px 20px; }
-  .decor { display: none; }
-  .card { padding: 20px; }
+  
+  .card-rsvp-full { padding: 40px 15px; margin-top: 10px; }
+  .rsvp-header h3 { font-size: 3rem; }
+  .professional-form { max-width: 100%; }
+  .radio-options { grid-template-columns: 1fr; }
+  
+  .card-registry-full { padding: 10px 15px 0 15px; margin-top: 2px; width: 100%; }
+  .registry-header h3 { font-size: 2.5rem; }
+  .registry-intro, .registry-text { font-size: 1.2rem;font-weight: 900; }
+  .registry-signature { font-size: 2.5rem; margin: 20px 0 5px 0; }
+  .iban-code { font-size: 0.95rem; }
+  
+  .radio-options { flex-direction: row; gap: 10px; }
+  .radio-box { padding: 10px 5px; font-size: 0.9rem; }
+  
+  .footer-logo { width: 350px; }
+  .footer-logo-container { padding-bottom: 1px; }
 }
 
