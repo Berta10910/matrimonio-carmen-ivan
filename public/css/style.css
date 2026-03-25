@@ -250,7 +250,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 1px;
   color: #1a3c5e;
   flex-wrap: wrap;
 }
