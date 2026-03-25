@@ -25,6 +25,14 @@
 
   <div class="passport-main">
 
+    <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+      <div style="position: fixed; top: 20px; left: 20px; z-index: 9999;">
+        <a href="/invitati" class="btn-send-professional" style="padding: 10px 20px; font-size: 0.9rem; text-decoration: none;">
+          INVITATI
+        </a>
+      </div>
+    <% } %>
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <h1 class="names-title">Ivan & Carmen</h1>
@@ -190,7 +198,16 @@
 
     <!-- CHIUSURA LOGO -->
     <div class="footer-logo-container">
-      <img src="/images/logo9.png" alt="Logo Ivan e Carmen" class="footer-logo">
+      <img src="/images/logo11.png" alt="Logo Ivan e Carmen" class="footer-logo">
+    </div>
+
+    <!-- LOGOUT -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <form action="/logout" method="post">
+        <button type="submit" style="background: none; border: none; color: #1a3c5e; text-decoration: underline; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 1rem; opacity: 0.6;">
+          Esci / Cambia account
+        </button>
+      </form>
     </div>
 
     <!-- Decorazione fiori in fondo -->
