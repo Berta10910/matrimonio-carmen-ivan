@@ -139,7 +139,7 @@
                 <span class="radio-box">Sì, mi unirò ai festeggiamenti</span>
               </label>
               <label class="radio-card">
-                <input type="radio" name="presenza" value="no">
+                <input type="radio" name="presenza" value="no" >
                 <span class="radio-box">No, non potrò esserci</span>
               </label>
             </div>
@@ -147,26 +147,26 @@
 
           <div class="form-field full">
             <label for="p_num" class="label">Numero partecipanti</label>
-            <input type="number" id="p_num" name="partecipanti_num" min="1" placeholder="Totale persone">
+            <input type="number" id="p_num" name="partecipanti_num" min="1" placeholder="Totale persone" required>
           </div>
 
           <div class="form-field full">
             <label for="p_nomi" class="label">Nome e cognome partecipanti</label>
-            <input type="text" id="p_nomi" name="partecipanti_nomi" placeholder="Esempio: Anna, Marco...">
+            <input type="text" id="p_nomi" name="partecipanti_nomi" placeholder="Esempio: Anna, Marco..." required>
           </div>
 
           <div class="form-field full">
-            <label for="allergie" class="label">Allergie, intolleranze o regimi alimentari</label>
+            <label for="allergie" class="label">Allergie, intolleranze o regimi alimentari<label style="font-size: 0.9rem; color: rgb(26 60 94); padding-left: 8px; font-family: math;">(Facoltativo)</label></label>
             <textarea id="allergie" name="allergie" placeholder="Specifica il nominativo e l'esigenza (es. Mario: celiaco)"></textarea>
           </div>
 
           <div class="form-field full">
-            <label for="b_eta" class="label">Età dei vostri bambini</label>
+            <label for="b_eta" class="label">Età dei vostri bambini<label style="font-size: 0.9rem; color: rgb(26 60 94); padding-left: 8px; font-family: math;">(Facoltativo)</label></label>
             <input type="text" id="b_eta" name="bambini_eta" placeholder="Es: 4 e 7 anni">
           </div>
 
           <div class="form-field full">
-            <label for="mess" class="label"> Un messaggio per gli sposi</label>
+            <label for="mess" class="label"> Un messaggio per gli sposi<label style="font-size: 0.9rem; color: rgb(26 60 94); padding-left: 8px; font-family: math;">(Facoltativo)</label></label>
             <textarea id="mess" name="messaggio" placeholder="Scrivici un pensiero..."></textarea>
           </div>
         </div>
