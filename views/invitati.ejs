@@ -58,6 +58,52 @@
     }
     .status-si { background: #d4edda; color: #155724; }
     .status-no { background: #f8d7da; color: #721c24; }
+    /* MOBILE VERSION */
+@media (max-width: 768px) {
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #1a3c5e;
+  }
+
+  .guests-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -89,17 +135,22 @@
         <% if (rsvps && rsvps.length > 0) { %>
           <% rsvps.reverse().forEach(function(rsvp) { %>
             <tr>
-              <td><strong><%= rsvp.nome %></strong></td>
-              <td>
-                <span class="status-presenza <%= rsvp.presenza === 'si' ? 'status-si' : 'status-no' %>">
-                  <%= rsvp.presenza === 'si' ? 'SÌ' : 'NO' %>
-                </span>
-              </td>
-              <td><%= rsvp.partecipanti_num || '-' %></td>
-              <td><%= rsvp.partecipanti_nomi || '-' %></td>
-              <td><%= rsvp.allergie || '-' %></td>
-              <td><%= rsvp.bambini_eta || '-' %></td>
-              <td><small><%= rsvp.messaggio || '-' %></small></td>
+              <td data-label="Nome"><strong><%= rsvp.nome %></strong></td>
+              <td data-label="Presenza">
+  <span class="status-presenza <%= rsvp.presenza === 'si' ? 'status-si' : 'status-no' %>">
+    <%= rsvp.presenza === 'si' ? 'SÌ' : 'NO' %>
+  </span>
+</td>
+
+<td data-label="N° Persone"><%= rsvp.partecipanti_num || '-' %></td>
+
+<td data-label="Partecipanti"><%= rsvp.partecipanti_nomi || '-' %></td>
+
+<td data-label="Allergie"><%= rsvp.allergie || '-' %></td>
+
+<td data-label="Bambini"><%= rsvp.bambini_eta || '-' %></td>
+
+<td data-label="Messaggio"><small><%= rsvp.messaggio || '-' %></small></td>
             </tr>
           <% }); %>
         <% } else { %>
