@@ -91,7 +91,7 @@ app.post('/logout', (req, res) => {
   })
 })
 
-aapp.get('/invitati', requireAuth, requireAdmin, async (req, res) => {
+app.get('/invitati', requireAuth, requireAdmin, async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM rsvps ORDER BY created_at DESC");
     res.render('invitati', { rsvps: result.rows, couple: 'Carmen & Ivan' });
