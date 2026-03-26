@@ -11,10 +11,17 @@ const PASSWORD = process.env.PASSWORD || 'IvanCarmen2026'
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'AdminCarmen'
 const SESSION_SECRET = process.env.SESSION_SECRET || 'change-this-secret'
 
+const { Pool } = require("pg");
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
@@ -84,42 +91,17 @@ app.post('/logout', (req, res) => {
   })
 })
 
-app.get('/invitati', requireAuth, requireAdmin, (req, res) => {
-  const rsvpPath = path.join(__dirname, 'data', 'rsvp.json')
-  let rsvps = []
-  
-  // Proviamo a leggere rsvp.json (dati dal form)
+aapp.get('/invitati', requireAuth, requireAdmin, async (req, res) => {
   try {
-    if (fs.existsSync(rsvpPath)) {
-      const json = fs.readFileSync(rsvpPath, 'utf8')
-      rsvps = JSON.parse(json)
-    }
-  } catch (e) {
-    console.error('Errore lettura rsvp.json:', e)
+    const result = await pool.query("SELECT * FROM rsvps ORDER BY created_at DESC");
+    res.render('invitati', { rsvps: result.rows, couple: 'Carmen & Ivan' });
+  } catch (err) {
+    console.error("Errore DB:", err);
+    res.render('invitati', { rsvps: [], couple: 'Carmen & Ivan' });
   }
-  
-  // Se rsvps è vuoto, proviamo a vedere se c'è invitati.json (vecchio formato o fallback)
-  if (rsvps.length === 0) {
-    try {
-      const invitatiPath = path.join(__dirname, 'data', 'invitati.json')
-      if (fs.existsSync(invitatiPath)) {
-        const json = fs.readFileSync(invitatiPath, 'utf8')
-        const invitati = JSON.parse(json)
-        // Adattiamo il formato se necessario
-        rsvps = invitati.map(inv => ({
-          nome: inv.nome,
-          presenza: 'si',
-          messaggio: inv.note || 'Dati da invitati.json'
-        }))
-      }
-    } catch (e) {}
-  }
-
-  res.render('invitati', { rsvps, couple: 'Carmen & Ivan' })
 })
 
-app.post('/rsvp', requireAuth, (req, res) => {
-  const rsvpPath = path.join(__dirname, 'data', 'rsvp.json')
+app.post('/rsvp', requireAuth, async (req, res) => {
   const { 
     nome, 
     presenza, 
@@ -128,40 +110,20 @@ app.post('/rsvp', requireAuth, (req, res) => {
     allergie, 
     bambini_eta, 
     messaggio 
-  } = req.body
-  
-  const newRsvp = {
-    nome,
-    presenza,
-    partecipanti_num,
-    partecipanti_nomi,
-    allergie,
-    bambini_eta,
-    messaggio,
-    timestamp: new Date().toISOString()
-  }
-
-  let rsvps = []
-  try {
-    if (fs.existsSync(rsvpPath)) {
-      const data = fs.readFileSync(rsvpPath, 'utf8')
-      rsvps = JSON.parse(data)
-    }
-  } catch (e) {
-    console.error('Errore lettura RSVP:', e)
-  }
-
-  rsvps.push(newRsvp)
+  } = req.body;
 
   try {
-    if (!fs.existsSync(path.join(__dirname, 'data'))) {
-      fs.mkdirSync(path.join(__dirname, 'data'))
-    }
-    fs.writeFileSync(rsvpPath, JSON.stringify(rsvps, null, 2))
-    res.send('<script>alert("Grazie! La tua conferma è stata inviata."); window.location.href="/";</script>')
-  } catch (e) {
-    console.error('Errore scrittura RSVP:', e)
-    res.status(500).send('Errore nel salvataggio. Riprova più tardi.')
+    await pool.query(
+      `INSERT INTO rsvps 
+      (nome, presenza, partecipanti_num, partecipanti_nomi, allergie, bambini_eta, messaggio)
+      VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+      [nome, presenza, partecipanti_num, partecipanti_nomi, allergie, bambini_eta, messaggio]
+    );
+
+    res.send('<script>alert("Grazie! Conferma inviata."); window.location.href="/";</script>');
+  } catch (err) {
+    console.error("Errore DB:", err);
+    res.status(500).send("Errore database");
   }
 })
 
